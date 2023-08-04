@@ -1,35 +1,39 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const validator = require('validator');
 
+const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     firstName : {
         type : String,
-        require : true
+        required : [true,'First Name is required field']
     },
     lastName : {
         type : String,
-        require : true
-    },
-    email : {
-        type : String,
-        require : true,
-        unique : true
-    },
-    phone : {
-        type : String,
-        require : true,
-        unique : true
+        required : [true,'Last Name is required field']
     },
     userName : {
         type : String,
-        require : true,
-        unique : true
+        required : [true,'User Name is required field']
     },
-    dateOfBirth : {
+    email : {
+        type : String,
+        lowerCase : true,
+        required : [true,'Email is required field'],
+        unique : [true,'This email is already in use'],
+        validate : [validator.isEmail,'Not a valid email address']
+    },
+    phone : {
+        type : Number,
+        maxlength : [10,'Phone number must be of 10 digits'],
+        require : [true,'Phone number is required field'],
+        unique : [true,'This phone numeber is already in use']
+    },
+    dateofBirth : {
         type : Date,
-        require : true
+        required : [true,'Date of birth is requried field']
     }
+
 });
 
 module.exports = mongoose.model('User',userSchema);
