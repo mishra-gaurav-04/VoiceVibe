@@ -1,5 +1,8 @@
 const User = require('../model/User');
 const validateAge = require('../utils/ageValidation');
+const otpService = require('../services/otp-service');
+const hashService = require('../services/hashing-service');
+const emailService = require('../services/email-service');
 
 exports.signup = async(req,res,next) => {
     try{
@@ -18,7 +21,6 @@ exports.signup = async(req,res,next) => {
                 message : 'Invalid Age'
             })
         }
-
         const newUser = await User.create({
             firstName : firstName,
             lastName : lastName,
@@ -28,9 +30,24 @@ exports.signup = async(req,res,next) => {
             dateofBirth : dateofbirth
         })
 
+        // otp generation
+        const ttl = 1000 * 60 * 2;
+        const otp = await otpService.generateOTP();
+        const expires = Date.now() + ttl;
+        const data = `${email}.${otp}.${expires}`;
+        const hashedOtp = await hashService.hashOtp(data);
+
+        const options = {
+            email : email,
+            subject : 'OTP Verifications',
+            message : `Your otp for VoiceVibes is ${otp}`
+        }
+
+        // await emailService.sendMail(options);
+
         res.status(201).json({
             status : 'Success',
-            newUser
+            hashedOtp
         })
 
     }
@@ -42,4 +59,6 @@ exports.signup = async(req,res,next) => {
         });
     }
 };
-exports.login = () => {};
+
+exports.loginByEmail = () => {};
+exports.loginByPhone = () => {};
