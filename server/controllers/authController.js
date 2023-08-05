@@ -4,6 +4,7 @@ const otpService = require('../services/otp-service');
 const hashService = require('../services/hashing-service');
 const emailService = require('../services/email-service');
 const tokenService = require('../services/token-service');
+const UserDataEmail = require('../utils/UserData');
 
 exports.signup = async(req,res,next) => {
     try{
@@ -153,8 +154,27 @@ exports.verifyOtpEmail = async(req,res,next) => {
 
         const {accessToken,refreshToken} = await tokenService.generateToken({id:user._id});
         await tokenService.storeRefreshToken(refreshToken,user._id);
+
+        res.cookie('refreshToken',refreshToken,{
+            maxAge : 1000*60*60*24*30,
+            httpOnly : true
+        });
+
+        res.cookie('accessToken',accessToken,{
+            maxAge : 1000*60*60*24*30,
+            httpOnly : true
+        });
+
+        user.activated = true;
+        const userData = new UserDataEmail(user);
         
+        res.status(200).json({
+            user : userData,
+            auth : true
+        })
     }
+    // TODO autologin using refesh token
+    // TODO logout function
     catch(err){
         console.loh(err);
         req.status(500).json({
@@ -163,3 +183,5 @@ exports.verifyOtpEmail = async(req,res,next) => {
         })
     };
 }
+
+
