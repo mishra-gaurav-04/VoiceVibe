@@ -25,7 +25,7 @@ const Otp = () => {
     <div className='flex items-center justify-center my-24'>
       <Card title='Verification' icon={lockIcon}>
         <div className='mt-4 p-2'>
-            <input type="text" onChange={handleOtpChange} className='text-center bg-transparent focus:outline-none border-b-2' maxLength={4} inputMode='numeric' autoComplete='one-time-code' placeholder='Enter Your OTP' required/>
+            <input type="text" onChange={handleOtpChange} className='text-center bg-transparent focus:outline-none border-b-2 focus:border-blue-600 ' maxLength={4} inputMode='numeric' autoComplete='one-time-code' placeholder='Enter Your OTP' required/>
         </div>
         <p className='text-center  mt-4 text-gray-500'>Didn't receive <Link className='text-blue-500'>Click to resend otp</Link></p>
         <div>
