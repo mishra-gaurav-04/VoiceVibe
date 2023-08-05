@@ -11,7 +11,7 @@ const SignUp = () => {
 
     const navigate = useNavigate();
     const redirectToRooms = () => {
-      navigate('/otp');
+      navigate('/authenticate/otp');
     }
   return (
     <div className='flex items-center justify-center my-24'>

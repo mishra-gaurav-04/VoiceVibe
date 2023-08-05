@@ -60,5 +60,53 @@ exports.signup = async(req,res,next) => {
     }
 };
 
-exports.loginByEmail = () => {};
+exports.loginByEmail = async(req,res,next) => {
+   try{
+        const { email } = req.body;
+
+        if(!email){
+            return res.status(400).json({
+                status : 'Fail',
+                message : 'Invalid email address',
+
+            })
+        }
+
+        const user = await User.findOne({email});
+        if(!user){
+            return res.status(404).json({
+                status : 'Fail',
+                message : 'User not found'
+            });
+        }
+
+        // generate otp
+        const ttl = 1000 * 60 * 2;
+        const otp = await otpService.generateOTP();
+        const expires = Date.now() + ttl;
+        const data = `${email}.${otp}.${expires}`;
+        const hashedOtp = await hashService.hashOtp(data);
+
+        const options = {
+            email : email,
+            subject : 'OTP Verifications',
+            message : `Your otp for VoiceVibes is ${otp}`
+        }
+
+        // await emailService.sendMail(options);
+        res.status(200).json({
+            status : 'Success',
+            message : 'OTP sent successfully',
+            hashedOtp
+        })
+   }
+   catch(err){
+     console.log(err);
+     res.status(500).json({
+        status : 'Fail',
+        message : 'Internal Server Error'
+     })
+   }
+    
+};
 exports.loginByPhone = () => {};
