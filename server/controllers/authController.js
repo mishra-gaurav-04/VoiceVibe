@@ -31,10 +31,10 @@ exports.signup = async(req,res,next) => {
         })
 
         // otp generation
-        const ttl = 1000 * 60 * 2;
-        const otp = await otpService.generateOTP();
+        const ttl = 1000*60*2;
         const expires = Date.now() + ttl;
-        const data = `${email}.${otp}.${expires}`;
+        const otp = await otpService.generateOTP();
+        const data = `${phone}.${otp}.${expires}`
         const hashedOtp = await hashService.hashOtp(data);
 
         const options = {
@@ -47,7 +47,8 @@ exports.signup = async(req,res,next) => {
 
         res.status(201).json({
             status : 'Success',
-            hashedOtp
+            hash : `${hashedOtp}.${expires}`,
+            email
         })
 
     }
@@ -81,10 +82,10 @@ exports.loginByEmail = async(req,res,next) => {
         }
 
         // generate otp
-        const ttl = 1000 * 60 * 2;
-        const otp = await otpService.generateOTP();
+        const ttl = 1000*60*2;
         const expires = Date.now() + ttl;
-        const data = `${email}.${otp}.${expires}`;
+        const otp = await otpService.generateOTP();
+        const data = `${email}.${otp}.${expires}`
         const hashedOtp = await hashService.hashOtp(data);
 
         const options = {
@@ -97,7 +98,8 @@ exports.loginByEmail = async(req,res,next) => {
         res.status(200).json({
             status : 'Success',
             message : 'OTP sent successfully',
-            hashedOtp
+            hash : `${hashedOtp}.${expires}`,
+            email
         })
    }
    catch(err){
@@ -109,4 +111,36 @@ exports.loginByEmail = async(req,res,next) => {
    }
     
 };
-exports.loginByPhone = () => {};
+
+// TODO implement phone authenication
+
+exports.verifyOtpEmail = async(req,res,next) => {
+    try{
+        const {email,otp,hash} = req.body;
+
+        if(!email || !otp || !hash){
+            return res.status(400).json({
+                status : 'Fail',
+                message : 'Missing Data'
+            });
+        }
+
+        const [hashedOtp,expires] = hash.split('.');
+        if(Date.now() > +expires){
+            return res.status(400).json({
+                status : 'Fail',
+                message : 'OTP Expired'
+            });
+        }
+
+        const data = `${email}.${otp}.${expires}`;
+        // const isValid
+    }
+    catch(err){
+        console.loh(err);
+        req.status(500).json({
+            status : 'Fail',
+            message : 'Internal Server Error'
+        })
+    };
+}
