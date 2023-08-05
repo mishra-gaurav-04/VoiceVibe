@@ -23,7 +23,7 @@ class TokenService{
             refreshToken
         }
     }
-    async storeToken(token,userID){
+    async storeRefreshToken(token,userID){
         try{
             await Token.create({
                 token,

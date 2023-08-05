@@ -3,6 +3,7 @@ const validateAge = require('../utils/ageValidation');
 const otpService = require('../services/otp-service');
 const hashService = require('../services/hashing-service');
 const emailService = require('../services/email-service');
+const tokenService = require('../services/token-service');
 
 exports.signup = async(req,res,next) => {
     try{
@@ -134,7 +135,25 @@ exports.verifyOtpEmail = async(req,res,next) => {
         }
 
         const data = `${email}.${otp}.${expires}`;
-        // const isValid
+        const isValid = await otpService.verifyOTP(hashedOtp,data);
+        if(!isValid){
+            return res.status(400).json({
+                status : 'Fail',
+                message : 'Invalid OTP'
+            })
+        }
+
+        let user = await User.findOne({email});
+        if(!user){
+            return res.status(404).json({
+                status : 'Fail',
+                message : 'User Not Found'
+            })
+        }
+
+        const {accessToken,refreshToken} = await tokenService.generateToken({id:user._id});
+        await tokenService.storeRefreshToken(refreshToken,user._id);
+        
     }
     catch(err){
         console.loh(err);

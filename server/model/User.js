@@ -32,6 +32,11 @@ const userSchema = new Schema({
     dateofBirth : {
         type : Date,
         required : [true,'Date of birth is requried field']
+    },
+    activated : {
+        type : Boolean,
+        required : false,
+        default : false
     }
 
 });
