@@ -11,7 +11,10 @@ const PORT = process.env.PORT;
 const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin : ['http://localhost:3000'],
+    credentials : true
+}));
 
 app.use('/api/v1',userRoutes);
 
