@@ -5,7 +5,7 @@ import Home from './Pages/Home';
 import Auth from './Pages/Auth';
 import Login from './Pages/authenticate/Login';
 import SignUp from './Pages/authenticate/SignUp';
-import Rooms from './Pages/Rooms';
+import Rooms from './Pages/rooms/Rooms';
 import Otp from './Pages/Otp';
 
 const App = () => {
