@@ -7,6 +7,8 @@ import Login from './Pages/authenticate/Login';
 import SignUp from './Pages/authenticate/SignUp';
 import Rooms from './Pages/rooms/Rooms';
 import Otp from './Pages/Otp';
+import Profile from './Pages/Profile';
+
 
 
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
         <Route path='/authenticate/signUp' element={<SignUp/>}/>
         <Route path='/authenticate/otp' element={<Otp/>}/>
         <Route path='/rooms' element={<Rooms/>}/>
+        <Route path='/profile' element={<Profile/>}/>
       </Routes>
     </BrowserRouter>
   )
