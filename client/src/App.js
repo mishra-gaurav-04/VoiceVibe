@@ -8,6 +8,7 @@ import SignUp from './Pages/authenticate/SignUp';
 import Rooms from './Pages/rooms/Rooms';
 import Otp from './Pages/Otp';
 
+
 const App = () => {
   return (
     <BrowserRouter>
