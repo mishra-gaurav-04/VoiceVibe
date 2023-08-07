@@ -96,7 +96,7 @@ exports.loginByEmail = async(req,res,next) => {
             message : `Your otp for VoiceVibes is ${otp}`
         }
 
-        // await emailService.sendMail(options);
+        await emailService.sendMail(options);
         res.status(200).json({
             status : 'Success',
             message : 'OTP sent successfully',

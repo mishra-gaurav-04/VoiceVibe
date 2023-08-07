@@ -19,4 +19,15 @@ export const signUp = async(data) => {
         console.log(err);
         return null;
     }
-}
+};
+
+export const loginEmail = async(data) => {
+    try{
+        const response = await api.post('/api/v1/loginEmail',data);
+        return response.data;
+    }
+    catch(err){
+        console.log(err);
+        return null
+    }
+};

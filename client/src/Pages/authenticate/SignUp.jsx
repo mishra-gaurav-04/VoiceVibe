@@ -27,13 +27,17 @@ const SignUp = () => {
         [name]: value,
       }));
     };
-    
 
     const navigate = useNavigate();
     const redirectToRooms = async() => {
       // console.log(formData);
       await navigate('/authenticate/otp');
-      await signUp(formData)
+      try{
+        await signUp(formData)
+      }
+      catch(err){
+        console.log(err);
+      }
     }
   return (
     <div className='flex items-center justify-center my-24'>

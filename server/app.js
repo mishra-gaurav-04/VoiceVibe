@@ -18,7 +18,7 @@ app.use(cors({
 
 app.use('/api/v1',userRoutes);
 
-
+ 
 const startServer = () => {
     connectDB(MONGO_DB_URI)
     .then(() => {
