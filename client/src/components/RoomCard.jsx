@@ -17,8 +17,8 @@ const RoomCard = () => {
             <ProfileImage className='absolute top-5  left-6'/>
         </div>  
             <div>
-                <p>Virat Kohli <ChatBubbleIcon sx={{color:green['A700']}}/></p>
-                <p>Anushka Sharma <ChatBubbleIcon sx={{color:green['A700']}}/></p>
+                <p>Kakashi Hatake <ChatBubbleIcon sx={{color:green['A700']}}/></p>
+                <p>Might Guy <ChatBubbleIcon sx={{color:green['A700']}}/></p>
             </div>
         </div>
         <div className='flex items-center justify-end mt-4 gap-1'>
