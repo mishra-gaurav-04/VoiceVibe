@@ -5,6 +5,7 @@ const authController = require('../controllers/authController');
 
 router.post('/signup',authController.signup);
 router.post('/loginEmail',authController.loginByEmail);
+router.post('/verify',authController.verifyOtpEmail);
 // TODO implement .loginPhone
 // router.post('/loginPhone',authController.loginByPhone);
 

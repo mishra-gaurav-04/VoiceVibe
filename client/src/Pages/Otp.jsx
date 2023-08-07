@@ -15,8 +15,6 @@ const Otp = () => {
     <ArrowRightAltOutlinedIcon sx={{ width: 20, height: 20,marginLeft:2}} />
   );
   
-  
-
   return (
     <div className='flex items-center justify-center my-24'>
       <Card title='Verification' icon={lockIcon}>

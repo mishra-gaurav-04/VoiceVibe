@@ -31,14 +31,22 @@ const Rooms = () => {
         </div>
       </div>
       <div className='mt-24 grid grid-cols-4 gap-4'>
-        <RoomCard />
-        <RoomCard />
-        <RoomCard />
-        <RoomCard />
-        <RoomCard />
-        <RoomCard />
-        <RoomCard />  
-        <RoomCard />      
+        <RoomCard/>
+        <RoomCard/>
+        <RoomCard/>
+        <RoomCard/>
+        <RoomCard/>
+        <RoomCard/>
+        <RoomCard/>  
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
+        <RoomCard/>      
       </div>
       <ModalComponent isModalOpen={isModalOpen} handleCloseModal={handleCloseModal}/>
     </div>
