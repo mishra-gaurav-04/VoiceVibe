@@ -7,7 +7,7 @@ import ProfileImage from './ProfileImage';
 
 const RoomCard = () => {
   return (
-    <div className='bg-[#262626] w-350 p-6 rounded-xl'>
+    <div className='bg-[#262626] w-370 p-6 rounded-xl'>
         <div>
             <p className='text-2xl font-semibold'>Which framework is best for front-end ?</p>
         </div>
@@ -28,4 +28,4 @@ const RoomCard = () => {
   )
 }
 
-export default RoomCard
+export default RoomCard;

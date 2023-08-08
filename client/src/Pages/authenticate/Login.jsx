@@ -31,7 +31,7 @@ const Login = () => {
    await navigate('/authenticate/otp');
    try{
       const res =  await loginEmail({email : email});
-      // console.log('Login Response form server',res);
+      console.log('Login Response form server',res);
    }
    catch(err){
       console.log(err);

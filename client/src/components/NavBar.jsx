@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PodcastsTwoToneIcon from '@mui/icons-material/PodcastsTwoTone';
 import { yellow } from '@mui/material/colors';
-import { useState } from 'react';
+// import { useState } from 'react';
 import ProfileImage from './ProfileImage'
 
 
-const Navbar = () => {
-  const [showProfile,setShowProfile] = useState(true);
+const Navbar = ({check}) => {
+  // const [showProfile,setShowProfile] = useState(true);
 
   return (
     <nav className='container mx-auto py-5'>
@@ -17,7 +17,7 @@ const Navbar = () => {
                   <span className=' text-2xl'>VoiceVibes</span>
               </Link>
               {
-                  showProfile && <div><ProfileImage/></div>
+                  check && <div><ProfileImage/></div>
               }
           </div>
     </nav>

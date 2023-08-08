@@ -31,3 +31,14 @@ export const loginEmail = async(data) => {
         return null
     }
 };
+
+export const verifyOtp = async(data) => {
+    try{
+        const response = await api.post('/api/v1/verify',data);
+        return response.data;
+    }
+    catch(err){
+        console.log(err);
+        return null;
+    }
+}

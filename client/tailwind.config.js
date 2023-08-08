@@ -8,7 +8,8 @@ module.exports = {
       width : {
         '700' : '700px',
         '500' : '500px',
-        '350'  : '350px'
+        '370'  : '370px',
+        '350'  : '350px',
       },
       maxHeight : {
         'card' : '300px'

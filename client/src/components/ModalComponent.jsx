@@ -14,7 +14,7 @@ const ModalComponent = ({isModalOpen,handleCloseModal}) => {
       );
   return (
     <Modal open={isModalOpen} onClose={handleCloseModal}>
-        <Box sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 500, bgcolor: '#1D1D1D',borderRadius: '0.75rem' , boxShadow: 24,p: 4, }}>
+        <Box sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 500, bgcolor: '#1D1D1D',borderRadius: '0.75rem' , boxShadow: 24,p: 4, overflow:'auto'}}>
             <div onClick={handleCloseModal} className='flex justify-end cursor-pointer'><CloseIcon/></div>
             <div>
                 <h1 className='text-xl'>Enter the topic to be discussed</h1>
