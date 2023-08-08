@@ -3,10 +3,13 @@ import Card from '../../components/Card';
 import Button from '../../components/Button';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 import { blue } from '@mui/material/colors';
-import { useNavigate } from 'react-router-dom';
 import EmailIcon from '@mui/icons-material/Email';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setOtp } from '../../redux/authSlice';
 import { loginEmail } from '../../apis/api';
+
 
 const Login = () => {
   const arrowIcon = (
@@ -25,18 +28,21 @@ const Login = () => {
     setEmail(data);
 
   }
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const redirectToOtp = async() => {
-    // console.log(otp)
-   await navigate('/authenticate/otp');
-   try{
-      const res =  await loginEmail({email : email});
-      console.log('Login Response form server',res);
-   }
-   catch(err){
+    try{
+      await navigate('/authenticate/otp');
+      const res = await loginEmail({email:email});
+      dispatch(setOtp({email : res.email,hash : res.hash}));
+      console.log('from login component',res);
+    }
+    catch(err){
       console.log(err);
-   }
-  };
+    }
+  }
 
   return (
     <div className='flex items-center flex-col gap-4 justify-center my-24 space-y-5'>

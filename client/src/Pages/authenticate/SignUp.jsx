@@ -38,7 +38,7 @@ const SignUp = () => {
       try{
         await navigate('/authenticate/otp');
         const res = await signUp(formData);
-        console.log(res);
+        // console.log('form signup component',res);
         dispatch(setOtp({email : res.email,hash : res.hash}))
 
       }
