@@ -16,7 +16,7 @@ const Otp = () => {
     <ArrowRightAltOutlinedIcon sx={{ width: 20, height: 20,marginLeft:2}} />
   );
 
-  // Testing Data
+
   
   const [otp,setOtp] = useState('');
 

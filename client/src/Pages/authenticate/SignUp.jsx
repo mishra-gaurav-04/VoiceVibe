@@ -3,7 +3,9 @@ import Button from '../../components/Button';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import {signUp} from '../../apis/api';
+import { signUp } from '../../apis/api';
+import { useDispatch } from 'react-redux';
+import { setOtp } from '../../redux/authSlice'
 
 const SignUp = () => {
     const arrowIcon = (
@@ -28,12 +30,17 @@ const SignUp = () => {
       }));
     };
 
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
-    const redirectToRooms = async() => {
-      // console.log(formData);
-      await navigate('/authenticate/otp');
+
+    const redirectToOtp = async () =>{
       try{
-        await signUp(formData)
+        await navigate('/authenticate/otp');
+        const res = await signUp(formData);
+        console.log(res);
+        dispatch(setOtp({email : res.email,hash : res.hash}))
+
       }
       catch(err){
         console.log(err);
@@ -65,7 +72,7 @@ const SignUp = () => {
                           <label for="floating_phone" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone Number</label>
                       </div>
                       <div class="relative z-0 w-full mb-6 group">
-                          <input type="email" name="userName" value={formData.userName} onChange={handleChange} id="floating_username" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                          <input type="email" name="userName" value={formData.userName} onChange={handleChange} id="floating_username" maxLength={20} class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                           <label for="floating_username" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">UserName</label>
                       </div>
                       <div class="relative max-w-sm">
@@ -78,7 +85,7 @@ const SignUp = () => {
                     </div>
                     </form>
                     <div className='flex items-center justify-center mt-5'>
-                      <Button title="Next" onClick={redirectToRooms} icon={arrowIcon} />
+                      <Button title="Next" onClick={redirectToOtp} icon={arrowIcon} />
                     </div>
               </div>
         </div>

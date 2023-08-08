@@ -14,7 +14,12 @@ export const authSlice = createSlice({
     initialState,
     reducers : {
         setAuth : (state,action) => {},
-        setOtp : (state,action) => {}
+        
+        setOtp : (state,action) => {
+            const {email,hash} = action.payload;
+            state.otp.email = email;
+            state.otp.hash = hash
+        }
     },
 })
 
