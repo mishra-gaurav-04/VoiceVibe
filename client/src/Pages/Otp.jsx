@@ -8,7 +8,7 @@ import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import { verifyOtp } from '../apis/api';
-// import { setAuth } from '../redux/authSlice';
+import { setAuth } from '../redux/authSlice';
 
 
 
@@ -33,16 +33,16 @@ const Otp = () => {
   const navigate = useNavigate();
 
   const redirectToRooms = async() => {
-    // try{
-    //   const res = await verifyOtp({email:email,hash:hash,otp:otp});
-    //   dispatch(setAuth({user : res.user, auth : res.auth}));
-    //   // console.log('OTP component',res);
-    // }
-    // catch(err){
-    //   console.log(err);
-    // }
+    try{
+      const res = await verifyOtp({otp:otp,email:email,hash:hash});
+      // console.log('From otp component',res);
+      dispatch(setAuth({user:res.user,auth:res.auth}));
+      await navigate('/rooms');
+    }
+    catch(err){
+      console.log(err);
+    }
   }
-
 
   return (
     <div className='flex items-center justify-center my-24'>
