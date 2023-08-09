@@ -6,7 +6,11 @@ import {Link,useNavigate} from 'react-router-dom';
 import Button from '../components/Button';
 import ArrowRightAltOutlinedIcon from '@mui/icons-material/ArrowRightAltOutlined';
 import { useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
 import { verifyOtp } from '../apis/api';
+// import { setAuth } from '../redux/authSlice';
+
+
 
 const Otp = () => {
   const lockIcon = (
@@ -16,8 +20,6 @@ const Otp = () => {
     <ArrowRightAltOutlinedIcon sx={{ width: 20, height: 20,marginLeft:2}} />
   );
 
-
-  
   const [otp,setOtp] = useState('');
 
   const handleOtpChange = (event) => {
@@ -25,16 +27,20 @@ const Otp = () => {
     const data = event.target.value;
     setOtp(data);
   }
+  const {email,hash} = useSelector((state) => state.auth.otp);
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const redirectToRooms = async() => {
-    try{
-      // await verifyOtp({});
-      await navigate('/rooms');
-    }
-    catch(err){
-      console.log(err);
-    }
+    // try{
+    //   const res = await verifyOtp({email:email,hash:hash,otp:otp});
+    //   dispatch(setAuth({user : res.user, auth : res.auth}));
+    //   // console.log('OTP component',res);
+    // }
+    // catch(err){
+    //   console.log(err);
+    // }
   }
 
 
@@ -46,7 +52,7 @@ const Otp = () => {
         </div>
         <p className='text-center  mt-4 text-gray-500'>Didn't receive <Link className='text-blue-500'>Click to resend otp</Link></p>
         <div>
-          <Button title='Verify' onClick={redirectToRooms} icon={arrowIcon}/>
+          <Button title='Verify' onClick={ redirectToRooms } icon={arrowIcon}/>
         </div>
       </Card>
     </div>

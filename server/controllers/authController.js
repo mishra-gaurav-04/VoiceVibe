@@ -96,12 +96,13 @@ exports.loginByEmail = async(req,res,next) => {
             message : `Your otp for VoiceVibes is ${otp}`
         }
 
-        await emailService.sendMail(options);
+        // await emailService.sendMail(options);
         res.status(200).json({
             status : 'Success',
             message : 'OTP sent successfully',
             hash : `${hashedOtp}.${expires}`,
-            email
+            email,
+            otp
         })
    }
    catch(err){
@@ -176,8 +177,8 @@ exports.verifyOtpEmail = async(req,res,next) => {
     // TODO autologin using refesh token
     // TODO logout function
     catch(err){
-        console.loh(err);
-        req.status(500).json({
+        console.log(err);
+        res.status(500).json({
             status : 'Fail',
             message : 'Internal Server Error'
         })

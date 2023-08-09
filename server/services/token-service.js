@@ -6,16 +6,15 @@ dotenv.config();
 
 const AccessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 const RefreshTokenSecret = process.env.REFRESH_TOKEN_SECRET;
-const AccessTokenExpireTime = process.env.ACCESS_TOKEN_EXPIRE_TIME;
-const RefreshTokenExpireTime = process.env.REFRESH_TOKEN_EXPIRE_TIME;
+
 
 class TokenService{
     async generateToken(payload){
         const accessToken = await jwt.sign(payload,AccessTokenSecret,{
-            expiresIn : AccessTokenExpireTime
+            expiresIn : process.env.ACCESS_TOKEN_EXPIRE_TIME
         });
         const refreshToken = await jwt.sign(payload,RefreshTokenSecret,{
-            expiresIn : RefreshTokenExpireTime
+            expiresIn : process.env.REFRESH_TOKEN_EXPIRE_TIME
         });
 
         return {
