@@ -35,9 +35,10 @@ const Otp = () => {
   const redirectToRooms = async() => {
     try{
       const res = await verifyOtp({otp:otp,email:email,hash:hash});
-      // console.log('From otp component',res);
+      console.log('From otp component',res);
       dispatch(setAuth({user:res.user,auth:res.auth}));
-      await navigate('/rooms');
+      await navigate('/rooms')
+
     }
     catch(err){
       console.log(err);

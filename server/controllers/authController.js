@@ -45,7 +45,7 @@ exports.signup = async(req,res,next) => {
             message : `Your otp for VoiceVibes is ${otp}`
         }
 
-        await emailService.sendMail(options);
+        // await emailService.sendMail(options);
 
         res.status(201).json({
             status : 'Success',
@@ -114,8 +114,6 @@ exports.loginByEmail = async(req,res,next) => {
    }
     
 };
-
-// TODO implement phone authenication
 
 exports.verifyOtpEmail = async(req,res,next) => {
     try{
