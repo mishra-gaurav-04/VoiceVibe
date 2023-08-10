@@ -17,7 +17,7 @@ const Navbar = ({check}) => {
                   <span className=' text-2xl'>VoiceVibes</span>
               </Link>
               {
-                  check && <div><ProfileImage/></div>
+                  check && <div><ProfileImage width={50} height={50}/></div>
               }
           </div>
     </nav>

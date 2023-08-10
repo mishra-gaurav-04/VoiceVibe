@@ -13,8 +13,8 @@ const RoomCard = () => {
         </div>
         <div className='flex justify-between mt-5'>
         <div className='relative'>
-            <ProfileImage className='absolute top-0 left-0'/>
-            <ProfileImage className='absolute top-5  left-6'/>
+            <ProfileImage className='absolute top-0 left-0' width={50} height={50}/>
+            <ProfileImage className='absolute top-5 left-6' width={50} height={50}/>
         </div>  
             <div>
                 <p>Kakashi Hatake <ChatBubbleIcon sx={{color:green['A700']}}/></p>

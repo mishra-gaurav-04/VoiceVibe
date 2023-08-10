@@ -8,8 +8,9 @@ module.exports = {
       width : {
         '700' : '700px',
         '500' : '500px',
-        '370'  : '370px',
-        '350'  : '350px',
+        '370' : '370px',
+        '350' : '350px',
+        '90' : '90px'
       },
       maxHeight : {
         'card' : '300px'
@@ -24,6 +25,9 @@ module.exports = {
       },
       left : {
         '1000' : '1000px'
+      },
+      height : {
+        '90' : '90px'
       }
 
     },
