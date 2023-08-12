@@ -21,7 +21,7 @@ const Profile = () => {
                     </div>
                 </div>
                 
-                <div className='bg-[#262626] p-8 rounded-lg flex gap-10'>
+                <div className='bg-[#262626] p-8 rounded-lg flex gap-10 shadow-xl'>
                     <div>
                         <h1 className='text-2xl text-center'>25</h1>
                         <p className='text-gray-500'>Followers</p>
@@ -32,7 +32,7 @@ const Profile = () => {
                     </div>
                 </div>
             </div>
-            <div className='bg-[#262626] mt-10 p-5 rounded-xl'>
+            <div className='bg-[#262626] mt-10 p-5 rounded-xl flex gap-8'>
               
             </div>
         </div>

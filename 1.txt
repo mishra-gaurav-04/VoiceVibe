@@ -1,0 +1,15 @@
+                <li>
+                  <Link to="/profile" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Profile</Link>
+                </li>
+                <li>
+                  <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Apply for Creator</Link>
+                </li>
+                <li>
+                  <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Upgrade to Premium</Link>
+                </li>
+                <li>
+                  <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">FeedBack</Link>
+                </li>
+                <li>
+                  <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Logout</Link>
+                </li> 
