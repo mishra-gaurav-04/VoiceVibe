@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ProfileImage from '../components/ProfileImage';
 import Button from '../components/Button';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import EditProfileComponent from '../components/EditProfileComponent';
 
 const Profile = () => {
+    const [isEditProfileOpen,setIsEditProfileOpen] = useState(false);
+    const handleEditProfileOpen = () => {
+        setIsEditProfileOpen(true);
+    };
+    const handleEditProfileClose = () => {
+        setIsEditProfileOpen(false);
+    }
   return (
     <div className='container mx-auto my-10'>
         <span className='text-4xl font-bold border-b-8 border-blue-600 rounded-sm'>Profile</span>
@@ -77,13 +85,14 @@ const Profile = () => {
                             </p>
                         </div>
                         <div className='flex gap-3 mt-3'>
-                            <Button title="Edit Profile"/>
+                            <Button title="Edit Profile" onClick={handleEditProfileOpen}/>
                             <Button title="Go To Creator's DashBoard"/>
                         </div>
                     </div>
               </div>
             </div>
         </div>
+        <EditProfileComponent isModalOpen={isEditProfileOpen} handleCloseModal={handleEditProfileClose}/>
     </div>
   )
 }
