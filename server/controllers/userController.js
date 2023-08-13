@@ -30,4 +30,4 @@ exports.getUserById = async(req,res,next) => {
             message : 'Internal Server Error'
         });
     }
-};
+};      

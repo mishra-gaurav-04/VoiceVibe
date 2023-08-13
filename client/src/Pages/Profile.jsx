@@ -4,11 +4,11 @@ import Button from '../components/Button';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditProfileComponent from '../components/EditProfileComponent';
 import { useSelector } from 'react-redux';
-import {getUserById} from '../apis/api';
+import { getUserById } from '../apis/api';
 
 const Profile = () => {
     const [isEditProfileOpen,setIsEditProfileOpen] = useState(false);
-    const [userData,setUserData] = useSelector({});
+    const [userData,setUserData] = useState({});
     const user = useSelector((state) => state.auth.user);
     // console.log(user);
     const handleEditProfileOpen = () => {
