@@ -33,6 +33,10 @@ const userSchema = new Schema({
         type : Date,
         required : [true,'Date of birth is requried field']
     },
+    country : {
+        type : String,
+        default : null
+    },
     activated : {
         type : Boolean,
         required : false,
