@@ -41,4 +41,15 @@ export const verifyOtp = async(data) => {
         console.log(err);
         return null;
     }
-}
+};
+
+export const getUserById = async(param) => {
+    try{
+        const response = await api.get(`/api/v1/users/${param}`);
+        return response.data;
+    }
+    catch(err){
+        console.log(err);
+        return null;
+    }
+};
