@@ -16,7 +16,7 @@ exports.getUserById = async(req,res,next) => {
             name : `${user.firstName} ${user.lastName}`,
             email : user.email,
             username : user.userName,
-            dateofBirth : user.dateofBirth
+            dateofBirth : user.dateofBirth.toLocaleDateString()
         }
         res.status(200).json({
             status : 'Success',
