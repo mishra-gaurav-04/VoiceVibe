@@ -40,7 +40,8 @@ const userSchema = new Schema({
     activated : {
         type : Boolean,
         required : false,
-        default : false
+        default : false,
+        select : false,
     }
 
 },{
