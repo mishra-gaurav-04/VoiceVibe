@@ -12,9 +12,15 @@ exports.getUserById = async(req,res,next) => {
             })
         }
 
+        const userData = {
+            name : `${user.firstName} ${user.lastName}`,
+            email : user.email,
+            username : user.userName,
+            dateofBirth : user.dateofBirth
+        }
         res.status(200).json({
             status : 'Success',
-            user
+            userData
         })
     }
     catch(err){

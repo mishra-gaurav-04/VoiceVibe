@@ -22,11 +22,10 @@ const App = () => {
       <NavBar check={isAuth} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/authenticate" element={<Auth />}>
-          <Route path="login" element={<Login />} />
-          <Route path="signUp" element={<SignUp />} />
-          <Route path="otp" element={<Otp />} />
-        </Route>
+        <Route path="/authenticate" element={<Auth />}/>
+        <Route path="/authenticate/login" element={<Login />} />
+        <Route path="/authenticate/signUp" element={<SignUp />} />
+        <Route path="/authenticate/otp" element={<Otp />} />
         <Route element={<ProtectedRoute />}>
           <Route path="rooms" element={<Rooms />} />
           <Route path="profile" element={<Profile />} />

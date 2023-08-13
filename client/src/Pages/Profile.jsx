@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect} from 'react';
 import ProfileImage from '../components/ProfileImage';
 import Button from '../components/Button';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditProfileComponent from '../components/EditProfileComponent';
+import { useSelector } from 'react-redux';
+import {getUserById} from '../apis/api';
 
 const Profile = () => {
     const [isEditProfileOpen,setIsEditProfileOpen] = useState(false);
+    const [userData,setUserData] = useSelector({});
+    const user = useSelector((state) => state.auth.user);
+    // console.log(user);
     const handleEditProfileOpen = () => {
         setIsEditProfileOpen(true);
     };
     const handleEditProfileClose = () => {
         setIsEditProfileOpen(false);
-    }
+    };
+
+    useEffect(() => {
+        const fetchUserDetails = async() => {
+            try{
+                const res = await getUserById(user._id);
+                setUserData(res);
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+        fetchUserDetails();
+    },[userData]);
   return (
     <div className='container mx-auto my-10'>
         <span className='text-4xl font-bold border-b-8 border-blue-600 rounded-sm'>Profile</span>
@@ -20,8 +38,8 @@ const Profile = () => {
                 <div className='flex items-center gap-5'>
                       <ProfileImage width={150} height={150}/>
                     <div className='flex flex-col gap-2'>
-                      <h1 className='font-bold text-2xl'>Naruto Uzumaki</h1>
-                      <p className='text-gray-600'>@daemon_demon</p>
+                      <h1 className='font-bold text-2xl'>{userData.name}</h1>
+                      <p className='text-gray-600'>{userData.username}</p>
                     </div>
                     <div className='ml-4 mb-5'>
                         <Button title="Follow"/>
@@ -43,15 +61,15 @@ const Profile = () => {
               <div className='bg-[#1c1c1c] p-10 w-1/2 rounded-lg'>
                     <div className='flex flex-col gap-3'>
                         <h1 className='text-3xl'>Name</h1>
-                        <h1 className='text-xl text-gray-600'>Naruto UzuMaki</h1>
+                        <h1 className='text-xl text-gray-600'>{userData.name}</h1>
                     </div>
                     <div className='mt-3 flex flex-col gap-3'>
                         <h1 className='text-3xl'>Email</h1>
-                        <h1 className='text-xl text-gray-600'>naruto.uzumaki@gmail.com</h1>
+                        <h1 className='text-xl text-gray-600'>{userData.email}</h1>
                     </div>
                     <div className='mt-3 flex flex-col gap-3'>
                         <h1 className='text-3xl'>User Name</h1>
-                        <h1 className='text-xl text-gray-600'>Naruto UzuMaki</h1>
+                        <h1 className='text-xl text-gray-600'>{userData.username}</h1>
                     </div>
                     <div className='mt-3 flex flex-col gap-3'>
                         <h1 className='text-3xl'>Country</h1>
@@ -59,7 +77,7 @@ const Profile = () => {
                     </div>
                     <div className='mt-3 flex flex-col gap-3'>
                         <h1 className='text-3xl'>Date of Birth</h1>
-                        <h1 className='text-xl text-gray-600'>Naruto UzuMaki</h1>
+                        <h1 className='text-xl text-gray-600'>{userData.dateofBirth}</h1>
                     </div>
 
               </div>

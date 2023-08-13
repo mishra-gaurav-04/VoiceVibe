@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-	isAuth : true,
+	isAuth : false,
     user : null,
-    otp : {
+    otp : { 
         email : '',
         hash : ''
     }
