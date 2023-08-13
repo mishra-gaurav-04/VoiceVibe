@@ -10,7 +10,7 @@ const Profile = () => {
     const [isEditProfileOpen,setIsEditProfileOpen] = useState(false);
     const [userData,setUserData] = useState({});
     const user = useSelector((state) => state.auth.user);
-    // console.log(user);
+    // console.log("From Profile component",user);
     const handleEditProfileOpen = () => {
         setIsEditProfileOpen(true);
     };
@@ -22,14 +22,15 @@ const Profile = () => {
         const fetchUserDetails = async() => {
             try{
                 const res = await getUserById(user._id);
-                setUserData(res);
+                console.log('From Profile component',res)
+                setUserData(res.userData);
             }
             catch(err){
                 console.log(err);
             }
         }
         fetchUserDetails();
-    },[userData]);
+    },[]);
   return (
     <div className='container mx-auto my-10'>
         <span className='text-4xl font-bold border-b-8 border-blue-600 rounded-sm'>Profile</span>
