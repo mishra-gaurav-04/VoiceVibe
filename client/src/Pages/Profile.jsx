@@ -22,7 +22,7 @@ const Profile = () => {
         const fetchUserDetails = async() => {
             try{
                 const res = await getUserById(user._id);
-                console.log('From Profile component',res)
+                console.log('from profile component',res);
                 setUserData(res.userData);
             }
             catch(err){
