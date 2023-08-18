@@ -182,5 +182,3 @@ exports.verifyOtpEmail = async(req,res,next) => {
         })
     };
 }
-
-

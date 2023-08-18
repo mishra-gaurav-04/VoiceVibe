@@ -37,6 +37,16 @@ const userSchema = new Schema({
         type : String,
         default : null
     },
+    image : {
+        public_id : {
+            type : String,
+            default : null
+        },
+        url : {
+            type : String,
+            default : "https://i.ibb.co/QmQf7fP/profile.jpg"
+        }
+    },
     activated : {
         type : Boolean,
         required : false,
