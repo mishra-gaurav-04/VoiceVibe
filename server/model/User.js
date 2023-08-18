@@ -47,6 +47,14 @@ const userSchema = new Schema({
             default : "https://i.ibb.co/QmQf7fP/profile.jpg"
         }
     },
+    role :{
+        type : String,
+        enum : {
+            values : ['user','admin','creator'],
+            message : 'Not A valid role',
+        },
+        default : 'user'
+    },
     activated : {
         type : Boolean,
         required : false,
