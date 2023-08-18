@@ -60,13 +60,22 @@ exports.updateUser = async(req,res,next) => {
 
         user.image.public_id = uploadedImg.public_id;
         user.image.url = uploadedImg.secure_url;
+        user.country = country;
+        user.userName = userName;
 
         await user.save();
+
+        const data = {
+            img_url : user.image.url,
+            country : user.country,
+            userName : user.userName
+        
+        }
 
         res.status(200).json({
             status : 'Success',
             message : 'User Profile Updated Successfully',
-            user
+            data
         });
     }
     catch(err){
