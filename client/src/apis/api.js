@@ -53,3 +53,18 @@ export const getUserById = async(param) => {
         return null;
     }
 };
+
+export const updateUser = async(data,param) => {
+    try{
+        const response = await api.put(`/api/v1//users/${param}`,data,{
+            headers : {
+                'Content-Type' : 'multipart/form-data'
+            },
+        });
+        return response.data;
+    }
+    catch(err){
+        console.log(err);
+        return null;
+    }
+}
