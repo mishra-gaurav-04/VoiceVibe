@@ -3,7 +3,7 @@ const router = express.Router();
 
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
-const singleUpload = require('../middleware/imageUpload');
+const { singleUpload } = require('../middleware/imageUpload');
 
 router.post('/signup',authController.signup);
 router.post('/loginEmail',authController.loginByEmail);

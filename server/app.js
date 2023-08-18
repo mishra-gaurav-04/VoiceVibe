@@ -12,11 +12,11 @@ dotenv.config();
 const PORT = process.env.PORT;
 const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
-cloudinary.v2.config({
-    cloud_name : process.env.CLOUDINARY_CLIENT_NAME,
-    api_key : process.env.CLOUDINARY_API_KEY,
-    api_secret : process.env.CLOUDINARY_API_SECRET
-})
+cloudinary.v2.config({ 
+  cloud_name: 'dzptuxggu', 
+  api_key: '312143668924137', 
+  api_secret: 'gps-HL2SyXMGVCd8dninypMaCXk' 
+});
 
 app.use(express.json());
 app.use(cors({

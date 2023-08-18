@@ -56,7 +56,11 @@ exports.updateUser = async(req,res,next) => {
         const file = req.file;
         const fileUri = getDataUri(file);
 
-        
+        const uploadedImg  = await cloudinary.v2.uploader.upload(fileUri.content);
+
+        user.image.public_id = uploadedImg.public_id;
+        user.image.url = uploadedImg.secure_url;
+
         await user.save();
 
         res.status(200).json({
@@ -69,7 +73,8 @@ exports.updateUser = async(req,res,next) => {
         console.log(err);
         res.status(500).json({
             status : 'Fail',
-            message : 'Internal Server Error'
+            message : 'Internal Server Error',
+            err
         });
     }
 }
