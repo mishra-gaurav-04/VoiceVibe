@@ -33,33 +33,33 @@ exports.getUserById = async(req,res,next) => {
 }; 
 
 exports.updateUser = async(req,res,next) => {
-   try{
+    try{
         const userId = req.params.id;
-        const updatedUser = req.body;
+        const {userName,country} = req.body;
+        // const file = req.file
 
         const user = await User.findById(userId);
-        
+
         if(!user){
             return res.status(404).json({
                 status : 'Fail',
                 message : 'User Not Found'
             });
         }
-
-        for(const key in updatedUser){
-            user[key] = updatedUser[key];
-        }
+        
         await user.save();
 
         res.status(200).json({
             status : 'Success',
+            message : 'User Profile Updated Successfully',
             user
-        })
-   }
-   catch(err){
+        });
+    }
+    catch(err){
+        console.log(err);
         res.status(500).json({
             status : 'Fail',
             message : 'Internal Server Error'
-        })
-   }
+        });
+    }
 }

@@ -51,6 +51,7 @@ exports.signup = async(req,res,next) => {
             status : 'Success',
             hash : `${hashedOtp}.${expires}`,
             email
+            
         })
 
     }
