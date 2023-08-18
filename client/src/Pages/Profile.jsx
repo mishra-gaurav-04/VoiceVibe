@@ -22,7 +22,6 @@ const Profile = () => {
         const fetchUserDetails = async() => {
             try{
                 const res = await getUserById(user._id);
-                console.log('from profile component',res);
                 setUserData(res.userData);
             }
             catch(err){
@@ -37,7 +36,7 @@ const Profile = () => {
         <div className='mt-24'>
             <div className='flex justify-between items-center'>
                 <div className='flex items-center gap-5'>
-                      <ProfileImage width={150} height={150}/>
+                      <ProfileImage width={150} height={150} url={userData.imageUrl}/>
                     <div className='flex flex-col gap-2'>
                       <h1 className='font-bold text-2xl'>{userData.name}</h1>
                       <p className='text-gray-600'>{userData.username}</p>
