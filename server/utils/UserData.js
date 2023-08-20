@@ -3,14 +3,14 @@ class UserDataEmail{
     email;
     activated;
     createdAt;
-    img_url;
+    imageUrl;
 
     constructor(user){
         this._id = user._id;
         this.email = user.email;
         this.activated = user.activated;
         this.createdAt = user.createdAt;
-        this.img_url = user.image.url;
+        this.imageUrl = user.image.url;
     }
     
 }

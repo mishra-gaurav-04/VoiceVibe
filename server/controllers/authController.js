@@ -173,8 +173,7 @@ exports.verifyOtpEmail = async(req,res,next) => {
             auth : true
         })
     }
-    // TODO autologin using refesh token
-    // TODO logout function
+    
     catch(err){
         console.log(err);
         res.status(500).json({
