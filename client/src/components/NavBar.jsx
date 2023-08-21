@@ -3,6 +3,7 @@ import { Link,useLocation } from 'react-router-dom';
 import PodcastsTwoToneIcon from '@mui/icons-material/PodcastsTwoTone';
 import { yellow } from '@mui/material/colors';
 import ProfileImage from './ProfileImage';
+import Button from '../components/Button';
 
 const Navbar = ({ check }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -43,38 +44,32 @@ const Navbar = ({ check }) => {
   },[loacation.pathname]);
 
   return (
-    <nav className='container mx-auto py-5'>
+    <nav className=' p-5 bg-[#1a1919] '>
       <div className='flex items-center justify-between'>
-        <Link to="/" className='flex gap-2 items-center'>
-          <PodcastsTwoToneIcon sx={{ color: yellow[500], width: 33, height: 33 }} />
-          <span className='text-2xl'>VoiceVibes</span>
-        </Link>
-        {check && (
-          <div className='relative dropdown' ref={dropdownRef}>
-            <div onClick={toggleDropdown}><ProfileImage width={50} height={50}/></div>
-            {showDropdown && (
-              <div className='right-3 mt-2 bg-[#262626] absolute divide-y divide-gray-100 rounded-lg shadow w-44'>
-                <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-                    <li>
-                      <Link to="/profile" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Profile</Link>
-                    </li>
-                    <li>
-                      <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Apply for Creator</Link>
-                    </li>
-                    <li>
-                      <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Upgrade to Premium</Link>
-                    </li>
-                    <li>
-                      <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">FeedBack</Link>
-                    </li>
-                    <li>
-                      <Link to="#" class="block px-4 py-2 dark:hover:bg-gray-600 dark:hover:text-white">Logout</Link>
-                    </li> 
+        <div className='flex items-center'>
+            <Link to="/" className='flex gap-2 items-center'>
+              <PodcastsTwoToneIcon sx={{ color: yellow[500], width: 33, height: 33 }} />
+              <span className='text-2xl'>VoiceVibes</span>
+            </Link>
+            <div className='ml-6'>
+                <ul className='flex gap-7'>
+                  <li>Listen</li>
+                  <li>Pricing</li>
+                  <li>Blogs</li>
+                  <li>Help Center</li>
                 </ul>
+            </div>
+        </div>
+        <div>
+            <div className='flex gap-4 items-center justify-center mb-4'>
+              <div>
+                  <Button title="Login"/>
               </div>
-            )}
-          </div>
-        )}
+              <div>
+                  <Button title="Sign up"/>
+              </div>
+            </div>
+        </div>
       </div>
     </nav>
   );
